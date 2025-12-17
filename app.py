@@ -8,7 +8,7 @@ NETWORK_API = "https://192.168.2.6/network/default/dashboard"
 API_KEY = "vp0mZ7hUklZX/LFy9f4g/g"
 MAKE_API_KEY = "make_network_health"
 
-headers ={-
+headers ={
     "Authorization": f"Bearer {API_KEY}"
 }
 
@@ -79,3 +79,4 @@ def get_health(device_id: str, x_api_key: str = Header(None)):
         # Catch unexpected errors
         raise HTTPException(status_code=500, detail=str(e)
         )
+
