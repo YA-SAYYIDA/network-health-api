@@ -15,6 +15,11 @@ headers ={
 def verify_make_key(x_api_key: str = Header(None)):
    if x_api_key  != MAKE_API_KEY:
       raise HTTPException(status_code=401, detail="Unauthorized")
+
+@app.get("/ping")
+def ping(x_api_key: str = Header(None)):
+    verify_make_key(x_api_key)
+    return {"status": "ok"}
    
 
 @app.get("/device/config")
@@ -79,4 +84,5 @@ def get_health(device_id: str, x_api_key: str = Header(None)):
         # Catch unexpected errors
         raise HTTPException(status_code=500, detail=str(e)
         )
+
 
